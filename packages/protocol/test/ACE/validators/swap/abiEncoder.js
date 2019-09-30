@@ -63,12 +63,12 @@ contract('Swap Validator ABI Encoder', (accounts) => {
             expect(decoded[0].inputNotes[0].gamma.eq(inputNotes[0].gamma)).to.equal(true);
             expect(decoded[0].inputNotes[0].sigma.eq(inputNotes[0].sigma)).to.equal(true);
             expect(decoded[0].inputNotes[0].noteHash).to.equal(inputNotes[0].noteHash);
-            expect(decoded[0].inputNotes[0].owner).to.equal(inputNotes[0].owner.toLowerCase());
+            expect(decoded[0].inputNotes[0].owner).to.equal(inputNotes[0].owner);
 
             expect(decoded[0].outputNotes[0].gamma.eq(outputNotes[0].gamma)).to.equal(true);
             expect(decoded[0].outputNotes[0].sigma.eq(outputNotes[0].sigma)).to.equal(true);
             expect(decoded[0].outputNotes[0].noteHash).to.equal(outputNotes[0].noteHash);
-            expect(decoded[0].outputNotes[0].owner).to.equal(outputNotes[0].owner.toLowerCase());
+            expect(decoded[0].outputNotes[0].owner).to.equal(outputNotes[0].owner);
 
             expect(decoded[0].publicValue).to.equal(publicValue);
             expect(decoded[0].publicOwner).to.equal(publicOwner);
@@ -77,12 +77,12 @@ contract('Swap Validator ABI Encoder', (accounts) => {
             expect(decoded[1].inputNotes[0].gamma.eq(outputNotes[1].gamma)).to.equal(true);
             expect(decoded[1].inputNotes[0].sigma.eq(outputNotes[1].sigma)).to.equal(true);
             expect(decoded[1].inputNotes[0].noteHash).to.equal(outputNotes[1].noteHash);
-            expect(decoded[1].inputNotes[0].owner).to.equal(outputNotes[1].owner.toLowerCase());
+            expect(decoded[1].inputNotes[0].owner).to.equal(outputNotes[1].owner);
 
             expect(decoded[1].outputNotes[0].gamma.eq(inputNotes[1].gamma)).to.equal(true);
             expect(decoded[1].outputNotes[0].sigma.eq(inputNotes[1].sigma)).to.equal(true);
             expect(decoded[1].outputNotes[0].noteHash).to.equal(inputNotes[1].noteHash);
-            expect(decoded[1].outputNotes[0].owner).to.equal(inputNotes[1].owner.toLowerCase());
+            expect(decoded[1].outputNotes[0].owner).to.equal(inputNotes[1].owner);
 
             expect(decoded[1].publicValue).to.equal(publicValue);
             expect(decoded[1].publicOwner).to.equal(publicOwner);
@@ -120,7 +120,7 @@ contract('Swap Validator ABI Encoder', (accounts) => {
                 const length = 1 + encodedParams.length + 1;
                 const offsets = ProofUtils.getOffsets(length, encodedParams);
                 const abiEncodedParams = [proof.challengeHex.slice(2), ...offsets, ...encodedParams];
-                return `0x${abiEncodedParams.join('').toLowerCase()}`;
+                return `0x${abiEncodedParams.join('')}`;
             });
 
             const data = proof.encodeABI();

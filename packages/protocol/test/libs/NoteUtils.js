@@ -59,7 +59,7 @@ contract('NoteUtils', async (accounts) => {
             const { inputNotes, outputNotes, publicValue } = await getDefaultNotes();
             const proof = new JoinSplitProof(inputNotes, outputNotes, sender, publicValue, publicOwner);
             const result = await noteUtils.get(proof.eth.outputs, 0);
-            expect(result).to.equal(proof.eth.output.toLowerCase());
+            expect(result).to.equal(proof.eth.output);
         });
 
         it('should return a correct bytes note from a notes array', async () => {
@@ -70,7 +70,7 @@ contract('NoteUtils', async (accounts) => {
             const formattedOutputNote = `0x${encodedOutputNote.slice(0x40)}`;
             const formattedOutputNotes = `0x${encodedOutputNotes.slice(0x40)}`;
             const result = await noteUtils.get(formattedOutputNotes, 0);
-            expect(result).to.equal(formattedOutputNote.toLowerCase());
+            expect(result).to.equal(formattedOutputNote);
         });
 
         it('should extract the proof output components', async () => {
@@ -81,12 +81,12 @@ contract('NoteUtils', async (accounts) => {
 
             const result = await noteUtils.extractProofOutput(proof.eth.output);
             const formattedInputNotes = `0x${encodedInputNotes.slice(0x40)}`;
-            expect(result.inputNotes).to.equal(formattedInputNotes.toLowerCase());
+            expect(result.inputNotes).to.equal(formattedInputNotes);
             const formattedOutputNotes = `0x${encodedOutputNotes.slice(0x40)}`;
-            expect(result.outputNotes).to.equal(formattedOutputNotes.toLowerCase());
+            expect(result.outputNotes).to.equal(formattedOutputNotes);
 
             const proofOutput = outputCoder.decodeProofOutput(proof.output);
-            expect(result.publicOwner.toLowerCase()).to.equal(proofOutput.publicOwner.toLowerCase());
+            expect(result.publicOwner).to.equal(proofOutput.publicOwner);
             expect(result.publicValue.toNumber()).to.equal(proofOutput.publicValue);
         });
 
@@ -101,7 +101,7 @@ contract('NoteUtils', async (accounts) => {
             const formattedMetadata = `0x${metadata}`;
             const formattedTestNote = `0x${testNote.slice(0x40)}`;
             const result = await noteUtils.extractNote(formattedTestNote);
-            expect(result.owner.toLowerCase()).to.equal(owner.toLowerCase());
+            expect(result.owner).to.equal(owner);
             expect(result.noteHash).to.equal(noteHash);
             expect(result.metadata).to.equal(formattedMetadata);
         });
@@ -124,7 +124,7 @@ contract('NoteUtils', async (accounts) => {
             proof.publicOwner = bogusPublicOwner;
             proof.constructOutputs();
             const result = await noteUtils.extractProofOutput(proof.eth.output);
-            expect(result.publicOwner.toLowerCase()).to.equal(padLeft(bogusPublicOwner, 40));
+            expect(result.publicOwner).to.equal(padLeft(bogusPublicOwner, 40));
         });
     });
 

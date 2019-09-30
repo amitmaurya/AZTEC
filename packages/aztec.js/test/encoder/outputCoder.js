@@ -164,7 +164,7 @@ describe('Output Coder', () => {
             const location = parseInt(encoded.slice(0x40 + i * 0x20, 0x60 + i * 0x20), 16);
             const byteLength = parseInt(encoded.slice(location, location + 0x20), 16);
             const proofOutput = encoded.slice(location, location + 0x20 + byteLength);
-            expect(proofOutput).to.equal(outputCoder.encodeProofOutput(proofs[i]).toLowerCase());
+            expect(proofOutput).to.equal(outputCoder.encodeProofOutput(proofs[i]));
             sum += byteLength + 0x40;
         }
         expect(encodedLength).to.equal(sum - 0x20);
@@ -269,7 +269,7 @@ describe('Output Coder', () => {
         const result = outputCoder.decodeProofOutputs(encoded);
         expect(result.length).to.equal(proofOutputs.length);
         for (let i = 0; i < result.length; i += 1) {
-            expect(result[i].publicOwner).to.equal(proofOutputs[i].publicOwner.toLowerCase());
+            expect(result[i].publicOwner).to.equal(proofOutputs[i].publicOwner);
             expect(result[i].publicValue).to.equal(proofOutputs[i].publicValue.toNumber());
             expect(result[i].challenge).to.equal(challenges[i]);
             expect(result[i].inputNotes.length).to.equal(proofOutputs[i].inputNotes.length);
@@ -277,7 +277,7 @@ describe('Output Coder', () => {
             for (let j = 0; j < result[i].inputNotes.length; j += 1) {
                 expect(result[i].inputNotes[j].gamma.eq(proofOutputs[i].inputNotes[j].gamma)).to.equal(true);
                 expect(result[i].inputNotes[j].sigma.eq(proofOutputs[i].inputNotes[j].sigma)).to.equal(true);
-                expect(result[i].inputNotes[j].owner).to.equal(proofOutputs[i].inputNotes[j].owner.toLowerCase());
+                expect(result[i].inputNotes[j].owner).to.equal(proofOutputs[i].inputNotes[j].owner);
                 expect(result[i].inputNotes[j].noteHash).to.equal(proofOutputs[i].inputNotes[j].noteHash);
             }
             for (let j = 0; j < result[i].outputNotes.length; j += 1) {
@@ -286,7 +286,7 @@ describe('Output Coder', () => {
                 ).to.equal(true);
                 expect(result[i].outputNotes[j].gamma.eq(proofOutputs[i].outputNotes[j].gamma)).to.equal(true);
                 expect(result[i].outputNotes[j].sigma.eq(proofOutputs[i].outputNotes[j].sigma)).to.equal(true);
-                expect(result[i].outputNotes[j].owner).to.equal(proofOutputs[i].outputNotes[j].owner.toLowerCase());
+                expect(result[i].outputNotes[j].owner).to.equal(proofOutputs[i].outputNotes[j].owner);
                 expect(result[i].outputNotes[j].noteHash).to.equal(proofOutputs[i].outputNotes[j].noteHash);
             }
         }

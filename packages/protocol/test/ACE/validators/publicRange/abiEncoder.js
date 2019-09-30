@@ -44,14 +44,14 @@ contract('Public range ABI Encoder', (accounts) => {
         expect(decoded[0].inputNotes[0].gamma.eq(originalNote.gamma)).to.equal(true);
         expect(decoded[0].inputNotes[0].sigma.eq(originalNote.sigma)).to.equal(true);
         expect(decoded[0].inputNotes[0].noteHash).to.equal(originalNote.noteHash);
-        expect(decoded[0].inputNotes[0].owner).to.equal(originalNote.owner.toLowerCase());
+        expect(decoded[0].inputNotes[0].owner).to.equal(originalNote.owner);
 
         expect(decoded[0].outputNotes[0].gamma.eq(utilityNote.gamma)).to.equal(true);
         expect(decoded[0].outputNotes[0].sigma.eq(utilityNote.sigma)).to.equal(true);
         expect(decoded[0].outputNotes[0].noteHash).to.equal(utilityNote.noteHash);
-        expect(decoded[0].outputNotes[0].owner).to.equal(utilityNote.owner.toLowerCase());
+        expect(decoded[0].outputNotes[0].owner).to.equal(utilityNote.owner);
 
-        expect(decoded[0].publicOwner).to.equal(proof.publicOwner.toLowerCase());
+        expect(decoded[0].publicOwner).to.equal(proof.publicOwner);
         expect(decoded[0].publicValue).to.equal(proof.publicValue.toNumber());
         expect(decoded[0].challenge).to.equal(proof.challengeHex);
     });

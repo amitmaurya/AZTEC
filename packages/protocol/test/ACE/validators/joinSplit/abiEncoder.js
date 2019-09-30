@@ -50,22 +50,22 @@ contract('Join-Split ABI Encoder', (accounts) => {
             expect(decoded[0].outputNotes[0].gamma.eq(outputNotes[0].gamma)).to.equal(true);
             expect(decoded[0].outputNotes[0].sigma.eq(outputNotes[0].sigma)).to.equal(true);
             expect(decoded[0].outputNotes[0].noteHash).to.equal(outputNotes[0].noteHash);
-            expect(decoded[0].outputNotes[0].owner).to.equal(outputNotes[0].owner.toLowerCase());
+            expect(decoded[0].outputNotes[0].owner).to.equal(outputNotes[0].owner);
             expect(decoded[0].outputNotes[1].gamma.eq(outputNotes[1].gamma)).to.equal(true);
             expect(decoded[0].outputNotes[1].sigma.eq(outputNotes[1].sigma)).to.equal(true);
             expect(decoded[0].outputNotes[1].noteHash).to.equal(outputNotes[1].noteHash);
-            expect(decoded[0].outputNotes[1].owner).to.equal(outputNotes[1].owner.toLowerCase());
+            expect(decoded[0].outputNotes[1].owner).to.equal(outputNotes[1].owner);
 
             expect(decoded[0].inputNotes[0].gamma.eq(inputNotes[0].gamma)).to.equal(true);
             expect(decoded[0].inputNotes[0].sigma.eq(inputNotes[0].sigma)).to.equal(true);
             expect(decoded[0].inputNotes[0].noteHash).to.equal(inputNotes[0].noteHash);
-            expect(decoded[0].inputNotes[0].owner).to.equal(inputNotes[0].owner.toLowerCase());
+            expect(decoded[0].inputNotes[0].owner).to.equal(inputNotes[0].owner);
             expect(decoded[0].inputNotes[1].gamma.eq(inputNotes[1].gamma)).to.equal(true);
             expect(decoded[0].inputNotes[1].sigma.eq(inputNotes[1].sigma)).to.equal(true);
             expect(decoded[0].inputNotes[1].noteHash).to.equal(inputNotes[1].noteHash);
-            expect(decoded[0].inputNotes[1].owner).to.equal(inputNotes[1].owner.toLowerCase());
+            expect(decoded[0].inputNotes[1].owner).to.equal(inputNotes[1].owner);
 
-            expect(decoded[0].publicOwner).to.equal(publicOwner.toLowerCase());
+            expect(decoded[0].publicOwner).to.equal(publicOwner);
             expect(decoded[0].publicValue).to.equal(0);
             expect(decoded[0].challenge).to.equal(proof.challengeHex);
         });

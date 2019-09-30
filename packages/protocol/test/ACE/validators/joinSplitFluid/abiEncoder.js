@@ -41,28 +41,28 @@ contract('Mint ABI Encoder', (accounts) => {
         expect(decoded[0].inputNotes[0].gamma.eq(currentMintCounterNote.gamma)).to.equal(true);
         expect(decoded[0].inputNotes[0].sigma.eq(currentMintCounterNote.sigma)).to.equal(true);
         expect(decoded[0].inputNotes[0].noteHash).to.equal(currentMintCounterNote.noteHash);
-        expect(decoded[0].inputNotes[0].owner).to.equal(currentMintCounterNote.owner.toLowerCase());
+        expect(decoded[0].inputNotes[0].owner).to.equal(currentMintCounterNote.owner);
 
         expect(decoded[0].outputNotes[0].gamma.eq(newMintCounterNote.gamma)).to.equal(true);
         expect(decoded[0].outputNotes[0].sigma.eq(newMintCounterNote.sigma)).to.equal(true);
         expect(decoded[0].outputNotes[0].noteHash).to.equal(newMintCounterNote.noteHash);
-        expect(decoded[0].outputNotes[0].owner).to.equal(newMintCounterNote.owner.toLowerCase());
+        expect(decoded[0].outputNotes[0].owner).to.equal(newMintCounterNote.owner);
 
-        expect(decoded[0].publicOwner).to.equal(proof.publicOwner.toString().toLowerCase());
+        expect(decoded[0].publicOwner).to.equal(proof.publicOwner.toString());
         expect(decoded[0].publicValue).to.equal(proof.publicValue.toNumber());
         expect(decoded[0].challenge).to.equal(proof.challengeHex);
 
         expect(decoded[1].outputNotes[0].gamma.eq(mintedNotes[0].gamma)).to.equal(true);
         expect(decoded[1].outputNotes[0].sigma.eq(mintedNotes[0].sigma)).to.equal(true);
         expect(decoded[1].outputNotes[0].noteHash).to.equal(mintedNotes[0].noteHash);
-        expect(decoded[1].outputNotes[0].owner).to.equal(mintedNotes[0].owner.toLowerCase());
+        expect(decoded[1].outputNotes[0].owner).to.equal(mintedNotes[0].owner);
 
         expect(decoded[1].outputNotes[1].gamma.eq(mintedNotes[1].gamma)).to.equal(true);
         expect(decoded[1].outputNotes[1].sigma.eq(mintedNotes[1].sigma)).to.equal(true);
         expect(decoded[1].outputNotes[1].noteHash).to.equal(mintedNotes[1].noteHash);
-        expect(decoded[1].outputNotes[1].owner).to.equal(mintedNotes[1].owner.toLowerCase());
+        expect(decoded[1].outputNotes[1].owner).to.equal(mintedNotes[1].owner);
 
-        expect(decoded[1].publicOwner).to.equal(proof.publicOwner.toString().toLowerCase());
+        expect(decoded[1].publicOwner).to.equal(proof.publicOwner.toString());
         expect(decoded[1].publicValue).to.equal(proof.publicValue.toNumber());
         expect(decoded[1].challenge).to.equal(keccak256(proof.challengeHex));
     });
@@ -101,15 +101,15 @@ contract('Burn ABI Encoder', (accounts) => {
         expect(decoded[0].inputNotes[0].gamma.eq(currentBurnCounterNote.gamma)).to.equal(true);
         expect(decoded[0].inputNotes[0].sigma.eq(currentBurnCounterNote.sigma)).to.equal(true);
         expect(decoded[0].inputNotes[0].noteHash).to.equal(currentBurnCounterNote.noteHash);
-        expect(decoded[0].inputNotes[0].owner).to.equal(currentBurnCounterNote.owner.toLowerCase());
+        expect(decoded[0].inputNotes[0].owner).to.equal(currentBurnCounterNote.owner);
 
         // First proof output (1 input note, 1 output note)
         expect(decoded[0].outputNotes[0].gamma.eq(newBurnCounterNote.gamma)).to.equal(true);
         expect(decoded[0].outputNotes[0].sigma.eq(newBurnCounterNote.sigma)).to.equal(true);
         expect(decoded[0].outputNotes[0].noteHash).to.equal(newBurnCounterNote.noteHash);
-        expect(decoded[0].outputNotes[0].owner).to.equal(newBurnCounterNote.owner.toLowerCase());
+        expect(decoded[0].outputNotes[0].owner).to.equal(newBurnCounterNote.owner);
 
-        expect(decoded[0].publicOwner).to.equal(proof.publicOwner.toString().toLowerCase());
+        expect(decoded[0].publicOwner).to.equal(proof.publicOwner.toString());
         expect(decoded[0].publicValue).to.equal(proof.publicValue.toNumber());
         expect(decoded[0].challenge).to.equal(proof.challengeHex);
 
@@ -117,14 +117,14 @@ contract('Burn ABI Encoder', (accounts) => {
         expect(decoded[1].outputNotes[0].gamma.eq(burnedNotes[0].gamma)).to.equal(true);
         expect(decoded[1].outputNotes[0].sigma.eq(burnedNotes[0].sigma)).to.equal(true);
         expect(decoded[1].outputNotes[0].noteHash).to.equal(burnedNotes[0].noteHash);
-        expect(decoded[1].outputNotes[0].owner).to.equal(burnedNotes[0].owner.toLowerCase());
+        expect(decoded[1].outputNotes[0].owner).to.equal(burnedNotes[0].owner);
 
         expect(decoded[1].outputNotes[1].gamma.eq(burnedNotes[1].gamma)).to.equal(true);
         expect(decoded[1].outputNotes[1].sigma.eq(burnedNotes[1].sigma)).to.equal(true);
         expect(decoded[1].outputNotes[1].noteHash).to.equal(burnedNotes[1].noteHash);
-        expect(decoded[1].outputNotes[1].owner).to.equal(burnedNotes[1].owner.toLowerCase());
+        expect(decoded[1].outputNotes[1].owner).to.equal(burnedNotes[1].owner);
 
-        expect(decoded[1].publicOwner).to.equal(proof.publicOwner.toString().toLowerCase());
+        expect(decoded[1].publicOwner).to.equal(proof.publicOwner.toString());
         expect(decoded[1].publicValue).to.equal(proof.publicValue.toNumber());
         expect(decoded[1].challenge).to.equal(keccak256(proof.challengeHex));
     });
