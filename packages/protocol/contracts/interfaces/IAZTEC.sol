@@ -44,5 +44,5 @@ contract IAZTEC {
     uint24 public constant DIVIDEND_PROOF = 66561;
 
     // Hash of a dummy AZTEC note with k = 0 and a = 1
-    bytes32 public constant ZERO_VALUE_NOTE_HASH = 0xcbc417524e52b95c42a4c42d357938497e3d199eb9b4a0139c92551d4000bc3c;
+    bytes32 public ZERO_VALUE_NOTE_HASH = 0xcbc417524e52b95c42a4c42d357938497e3d199eb9b4a0139c92551d4000bc3c;
 }
