@@ -304,6 +304,21 @@ note.fromViewKey = async (viewingKey) => {
 };
 
 /**
+ * Create Note instance from a viewing key and public key
+ *
+ * @method fromViewPublicKey
+ * @param {string} viewingKey the viewing key for the note
+ * @param {string} publicKey the public key for the note
+ * @returns {Promise} promise that resolves to created note instance
+ */
+note.fromViewPublicKey = async (viewingKey, publicKey) => {
+    const k = new BN(viewingKey.slice(66, 74), 16).toRed(bn128.groupReduction);
+    const setupPoint = await setup.fetchPoint(k.toNumber());
+    const newNote = new Note(null, viewingKey, publicKey, setupPoint);
+    return newNote;
+};
+
+/**
  * Export the Note class as part of the note module. We shouldn't really use this directly, but useful for testing purposes
  *
  * @memberof module:note
